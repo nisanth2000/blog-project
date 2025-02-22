@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    h1 {
+      color: black;
+    }
+
+    button[type="submit"] {
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        border: none; /* Remove default border */
+        padding: 10px 20px; /* Add padding */
+        text-align: center; /* Center the text */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Change cursor on hover */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      }
+  
+      button[type="submit"]:hover {
+        background-color: #45a049; /* Darker green on hover */
+      }
+  
+      button[type="submit"]:active {
+        background-color: #388e3c; /* Even darker green when clicked */
+      }
+
+</style>
+<body>
+    <h1 >Create a new post</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

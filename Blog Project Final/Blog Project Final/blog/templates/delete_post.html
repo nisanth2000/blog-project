@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Post</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .delete-button {
+        background-color: red;
+        color: white;
+        padding: 20px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px; 
+      }
+
+      .cancel-link {
+        font-size: 18px; /* Adjust the font size */
+        color:rgb(51, 15, 150); /* Set text color */
+        text-decoration: none; /* Remove underline */
+        
+        
+        border-radius: 5px; /* Make the corners rounded */
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+    }
+    
+    .cancel-link:hover {
+        background-color: #e0e0e0; /* Change background color on hover */
+    }
+    
+</style>
+
+<body>
+    <h1>Are you sure you want to delete "{{ post.title }}"?</h1>
+    <p>{{ post.content }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit"  class="delete-button">Delete</button>
+    </form>
+    <a href="{% url 'home' %}" class="cancel-link">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .container h1 {
+            text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
+        }
+                h1 {
+            text-align: center;
+            padding-top: 50px;
+        }
+        /* .post {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        } */
+        /* .post:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+    z-index: 10; 
+    background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+} */
+
+/* .post p {
+    color: #555;
+}
+        .post h2 {
+            margin-top: 0;
+        }
+        /* .post p {
+            color: #555; */
+        /* } */
+        /* .logout {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+        }
+        
+        .logout a {
+            text-decoration: none;
+            color: red;
+            
+        } */ */
+        
+        /* .logout a:hover {
+            color: #f00; /* Change to your preferred color */
+        /* } */ */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container {
+    color: black;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container h1{
+    width: 25%;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    background-color: rgb(128, 128, 128,0.5);
+    color: white;
+    opacity: 0.6;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.container h1 {
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
+}
+
+.post {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 238, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1; 
+}
+
+.post:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+    z-index: 10; 
+    background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+}
+
+.post p {
+    color: #555;
+}
+    </style> 
+</head>
+<body>
+
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <a href="{% url 'post_create' %}" style="font-size: 24px; color: rgb(234, 234, 241);">Create a new post</a>
+        <hr>
+        
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <small>Created at: {{ post.created_at }}</small>
+                <a href="{% url 'post_update' id=post.id %}">Edit</a> |
+                <a href="{% url 'post_delete' id=post.id %}">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="logout">
+        <!-- Link to the logout view -->
+        <a href="{% url 'logout' %}">
+            <!-- Logout icon -->
+            <i class="fas fa-sign-out-alt" style="font-size: 24px; color: red;"></i>
+            Logout
+        </a>
+    </div>
+
+</body>
+</html>
